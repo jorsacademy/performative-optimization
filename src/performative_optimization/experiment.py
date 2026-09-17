@@ -56,10 +56,7 @@ def _fit_response_model(
         cfg.response_design_points,
     )
     sample_means = np.asarray(
-        [
-            np.mean(env.sample(float(q), cfg.response_samples_per_point, rng))
-            for q in decisions
-        ],
+        [np.mean(env.sample(float(q), cfg.response_samples_per_point, rng)) for q in decisions],
         dtype=float,
     )
     return fit_linear_response(decisions.astype(float), sample_means)
@@ -81,9 +78,7 @@ def _evaluate_trace(
     stable_best_response = (
         static_optimum(env.mean(q), env.config) if audit.feasible else float("inf")
     )
-    stability_residual = (
-        abs(stable_best_response - q) if audit.feasible else float("inf")
-    )
+    stability_residual = abs(stable_best_response - q) if audit.feasible else float("inf")
     return RunResult(
         seed=seed,
         split=split,
@@ -246,17 +241,11 @@ def run_benchmark(cfg: ExperimentConfig, include_ood: bool = True) -> dict[str, 
                 **{f"risk_{key}": value for key, value in risk_stats.items()},
                 "mean_regret_to_oracle": mean(row.regret_to_oracle for row in method_rows),
                 "mean_oscillation": mean(row.oscillation for row in method_rows),
-                "mean_stability_residual": mean(
-                    row.stability_residual for row in method_rows
-                ),
-                "mean_distribution_shift": mean(
-                    row.distribution_shift for row in method_rows
-                ),
+                "mean_stability_residual": mean(row.stability_residual for row in method_rows),
+                "mean_distribution_shift": mean(row.distribution_shift for row in method_rows),
                 "mean_deployments": mean(row.deployments for row in method_rows),
                 "mean_demand_samples": mean(row.demand_samples for row in method_rows),
-                "mean_optimization_calls": mean(
-                    row.optimization_calls for row in method_rows
-                ),
+                "mean_optimization_calls": mean(row.optimization_calls for row in method_rows),
             }
 
     paired: dict[str, dict[str, float]] = {}
