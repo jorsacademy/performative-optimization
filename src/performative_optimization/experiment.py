@@ -78,8 +78,12 @@ def _evaluate_trace(
     audit = audit_decision(q, env)
     risk = audit.objective_recomputed
     violation = audit.lower_bound_violation + audit.upper_bound_violation
-    stable_best_response = static_optimum(env.mean(q), env.config) if audit.feasible else float("inf")
-    stability_residual = abs(stable_best_response - q) if audit.feasible else float("inf")
+    stable_best_response = (
+        static_optimum(env.mean(q), env.config) if audit.feasible else float("inf")
+    )
+    stability_residual = (
+        abs(stable_best_response - q) if audit.feasible else float("inf")
+    )
     return RunResult(
         seed=seed,
         split=split,
