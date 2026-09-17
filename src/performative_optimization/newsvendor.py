@@ -23,9 +23,7 @@ def static_risk(decision: float, mu: float, cfg: EnvironmentConfig) -> float:
     shortage = expected_positive_part(mu, cfg.sigma, decision)
     overage = expected_negative_part(mu, cfg.sigma, decision)
     return float(
-        cfg.capacity_cost * decision
-        + cfg.shortage_cost * shortage
-        + cfg.overage_cost * overage
+        cfg.capacity_cost * decision + cfg.shortage_cost * shortage + cfg.overage_cost * overage
     )
 
 
@@ -72,9 +70,7 @@ def decision_dependent_optimum(
     candidates = [cfg.min_capacity, cfg.max_capacity]
 
     if abs(one_minus_slope) > 1e-12:
-        fractile = (
-            cfg.shortage_cost - cfg.capacity_cost / one_minus_slope
-        ) / denominator
+        fractile = (cfg.shortage_cost - cfg.capacity_cost / one_minus_slope) / denominator
         if 0.0 < fractile < 1.0:
             z = float(norm.ppf(fractile))
             interior = (intercept + cfg.sigma * z) / one_minus_slope
