@@ -39,7 +39,11 @@ class ExperimentConfig:
     ood_sensitivity: float = 0.55
 
     def __post_init__(self) -> None:
-        if not self.environment.min_capacity <= self.initial_decision <= self.environment.max_capacity:
+        if not (
+            self.environment.min_capacity
+            <= self.initial_decision
+            <= self.environment.max_capacity
+        ):
             raise ValueError("initial_decision must be feasible")
         if self.deployment_rounds < 1:
             raise ValueError("deployment_rounds must be at least 1")
