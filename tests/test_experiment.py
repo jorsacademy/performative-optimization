@@ -5,7 +5,6 @@ from performative_optimization.config import (
 from performative_optimization.environment import PerformativeDemandEnvironment
 from performative_optimization.experiment import run_benchmark, run_single_seed
 
-
 EXPECTED_METHODS = {
     "naive_static",
     "repeated_optimization",
