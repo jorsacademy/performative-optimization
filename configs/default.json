@@ -1,0 +1,19 @@
+{
+  "environment": {
+    "base_mean": 80.0,
+    "sensitivity": 0.35,
+    "sigma": 12.0,
+    "capacity_cost": 1.0,
+    "shortage_cost": 5.0,
+    "overage_cost": 1.0,
+    "min_capacity": 0.0,
+    "max_capacity": 180.0
+  },
+  "initial_decision": 70.0,
+  "deployment_rounds": 20,
+  "samples_per_round": 250,
+  "response_design_points": 8,
+  "response_samples_per_point": 150,
+  "seeds": [11, 29, 47, 83, 101, 131, 173, 211, 257, 307],
+  "ood_sensitivity": 0.55
+}
