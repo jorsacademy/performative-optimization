@@ -1,5 +1,11 @@
 # Performative Optimization
 
+<!-- portfolio-umbrella:start -->
+## Portfolio role
+
+This repository is intentionally maintained as a standalone primary repository in the consolidated Jors Academy portfolio. It is not used as a container for other projects.
+<!-- portfolio-umbrella:end -->
+
 A compact, reproducible research benchmark for **operations research under decision-dependent data distributions**. The repository studies a synthetic service-capacity / inventory-style newsvendor problem in which the deployed capacity changes future demand. The resulting feedback loop makes the data-generating distribution endogenous to the decision.
 
 This is an independent implementation informed by the performative prediction, stochastic optimization, and decision-dependent uncertainty literature. It is **not** a reproduction of a paper's code and does not claim paper-level benchmark performance.
